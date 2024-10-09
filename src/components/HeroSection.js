@@ -28,6 +28,7 @@ const HeroSection = () => {
         autoPlay
         loop
         muted
+        playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
         <source src={binaryVideo} type="video/mp4" />
