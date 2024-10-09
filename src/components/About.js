@@ -29,12 +29,14 @@ const educationTimeline = [
     degree: 'Diploma in Software Development',
     institution: 'Bow Valley College',
     location: 'Calgary, AB, CANADA',
+    link: 'https://bowvalleycollege.ca/',
   },
   {
     year: 'September 2021 - December 2021',
     degree: 'IT Analyst Program, Bootcamp/Certificate',
     institution: 'NPower Canada',
     location: 'Calgary, AB, CANADA',
+    link: 'https://npowercanada.ca/',
   },
 ];
 
@@ -45,6 +47,7 @@ const workTimeline = [
     field: 'Application Support Analyst',
     institution: 'YouVersion',
     location: 'Edmond, OK, USA | Remote',
+    link: 'https://www.youversion.com/',
   },
 ];
 
@@ -130,7 +133,8 @@ const About = () => {
                     <h4 className="text-lg sm:text-xl font-semibold">{item.degree}</h4>
                     <p className="text-gray-500 mt-2 sm:mt-0 sm:ml-8">{item.year}</p>
                   </div>
-                  <p className="text-gray-600">{item.institution}</p>
+                  <a href={item.link} target='_blank' rel='noopener noreferrer' className="relative text-gray-600 cursor-pointer inline-block after:absolute after:left-0 after:-bottom-0.5 after:w-full after:h-0.5 after:bg-gray-600 after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100"
+                  >{item.institution}</a>
                   <p className="text-gray-600">{item.location}</p>
                 </div>
               ))}
@@ -152,7 +156,8 @@ const About = () => {
                     <h4 className="text-lg sm:text-xl font-semibold">{item.field}</h4>
                     <p className="text-gray-500 mt-2 sm:mt-0 sm:ml-8">{item.year}</p>
                   </div>
-                  <p className="text-gray-600">{item.institution}</p>
+                  <a href={item.link} target='_blank' rel='noopener noreferrer' className="relative text-gray-600 cursor-pointer inline-block after:absolute after:left-0 after:-bottom-0.5 after:w-full after:h-0.5 after:bg-gray-600 after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100">
+                    {item.institution}</a>
                   <p className="text-gray-600">{item.location}</p>              
                 </div>
               ))}
