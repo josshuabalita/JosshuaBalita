@@ -72,7 +72,7 @@ const ProjectShowcase = () => {
                     create a watchlist, and search for movies. The backend integrates with a movie data API for dynamic content retrieval.
                   </p>
                   <div className="text-gray-600 flex items-center">
-                      <strong>C#, WinForms, Visual Studio, Movies API</strong>
+                      <strong>C# | WinForms | Visual Studio | Movies API</strong>
                       {/* Circular Button with Zoom-in on Hover for External Link */}
                       <a 
                       href="https://github.com/josshuabalita/MovieApplication" 
