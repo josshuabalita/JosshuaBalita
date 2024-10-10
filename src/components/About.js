@@ -74,16 +74,21 @@ const About = () => {
           animate={heroInView ? 'visible' : 'hidden'}
           variants={revealVariants}
         >
-          {/* Left Section for Photo */}
-          <div className="w-full md:w-auto flex-shrink-0 flex justify-center md:justify-start mb-4 md:mb-0">
-            {/* Outer Yellow Gradient Border */}
-            <div className="relative p-2 bg-gradient-to-r from-orange-400 to-orange-600 rounded-lg">
-              {/* Inner Photo with Solid Border and Shadow */}
-              <img
-                src={myPhoto}
-                alt="Professional Headshot"
-                className="w-60 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[28rem] object-cover border-4 border-gray-300 rounded-lg shadow-lg"
-              />
+          {/* Left Section for Photo */} 
+          <div className="w-full md:w-auto flex-shrink-0 flex justify-center md:justify-start mb-12 md:mb-0">
+            {/* Outline Behind the Photo */}
+            <div className="relative">
+              {/* Outer div for the outline effect with shadow */}
+              <div className="absolute inset-0 transform translate-x-4 translate-y-4 border-2 border-orange-500 rounded-lg shadow-xl"></div>
+              
+              {/* Inner Photo without Border or Background */}
+              <div className="relative">
+                <img
+                  src={myPhoto}
+                  alt="Professional Headshot"
+                  className="w-60 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[28rem] object-cover rounded-lg shadow-lg"
+                />
+              </div>
             </div>
           </div>
 
