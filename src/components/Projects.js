@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import moviePic from '../images/movieStreams.png';  
+import portalPic from '../images/studentPortal.png'
 
 const revealVariants = {
   hidden: { opacity: 0, x: -100 },
@@ -20,20 +21,20 @@ const ProjectShowcase = () => {
 
   return (
     <div className="flex flex-col items-center min-h-screen bg-black py-5">
-        
-        <motion.div
-            ref={ref}
-            initial="hidden"
-            animate={inView ? "visible" : "hidden"}
-            variants={revealVariants}
-            className="w-full text-center mb-12 relative"
-        >
-            <h1 className="text-3xl md:text-4xl font-bold uppercase mt-12">
-                My <span className="text-orange-500">Projects</span>.
-            </h1>
-            {/* Custom Underline */}
-            <div className="w-16 h-1 bg-orange-500 mx-auto mt-4 rounded-full"></div>
-        </motion.div>
+      
+      <motion.div
+          ref={ref}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={revealVariants}
+          className="w-full text-center mb-12 relative"
+      >
+          <h1 className="text-3xl md:text-4xl font-bold uppercase mt-12">
+              My <span className="text-orange-500">Projects</span>.
+          </h1>
+          {/* Custom Underline */}
+          <div className="w-16 h-1 bg-orange-500 mx-auto mt-4 rounded-full"></div>
+      </motion.div>
 
       {/* Project Showcase Section */}
       <motion.div
@@ -55,7 +56,7 @@ const ProjectShowcase = () => {
                   <img
                   src={moviePic}
                   alt="Project showcase"
-                  className="rounded-lg w-full h-auto max-h-[600px] object-contain"
+                  className="rounded-lg w-full h-auto max-h-[400px] object-contain"
                   />
               </motion.div>
 
@@ -88,8 +89,174 @@ const ProjectShowcase = () => {
               </motion.div>
           </div>
       </motion.div>
+
+      {/* Project Showcase Section - 2 */}
+      <motion.div
+          className="w-full flex justify-center items-center px-5 md:px-0 mb-12"
+          ref={ref}
+          initial="hidden"
+          animate={inView ? "visible" : "hidden"}
+          variants={revealVariants}
+      >
+          <div className="flex flex-col md:flex-row items-center p-6 rounded-lg shadow-lg max-w-6xl">
+              
+              {/* Text and tools used on the left */}
+              <motion.div
+                  className="md:w-2/5 w-full flex flex-col items-start md:mr-8"
+                  initial="hidden"
+                  animate={inView ? "visible" : "hidden"}
+                  variants={revealVariants}
+              >
+                  <h2 className="text-2xl font-bold mb-4">School Portal Website</h2>
+                  <p className="text-gray-600 mb-6">
+                    The School Portal is a user-friendly platform that allows students to register, drop, or 
+                    exchange courses and contact the administration for support. Administrators can manage student profiles, 
+                    add or remove courses, and access student contact information, making school management efficient and streamlined.
+                  </p>
+                  <div className="text-gray-600 flex items-center">
+                      <strong>React JS | Express JS | VS Code | MongoDB | API</strong>
+                      {/* Circular Button with Zoom-in on Hover for External Link */}
+                      <a 
+                      href="https://github.com/josshuabalita/SchoolPortalWebsite" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="ml-4 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center transition duration-300 transform hover:scale-110"
+                      aria-label="GitHub Repository"
+                      title="Movie Application Repository"
+                      >
+                      <i className="fas fa-external-link-alt text-gray-700"></i>  
+                      </a>
+                  </div>
+              </motion.div>
+
+              {/* Image with Gradient Gray Background on the right */}
+              <motion.div
+                  className="md:w-3/5 w-full flex justify-center mb-6 md:mb-0 bg-gradient-to-r from-gray-300 to-gray-100 p-4 rounded-lg"
+                  initial="hidden"
+                  animate={inView ? "visible" : "hidden"}
+                  variants={revealVariants}
+              >
+                  <img
+                  src={portalPic}
+                  alt="Project showcase"
+                  className="rounded-lg w-full h-auto max-h-[400px] object-contain"
+                  />
+              </motion.div>
+          </div>
+      </motion.div>
+
+      {/* Project Showcase Section - 3*/}
+      <motion.div
+        className="w-full flex justify-center items-center px-5 md:px-0 mb-12"
+        ref={ref}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        variants={revealVariants}
+      >
+          <div className="flex flex-col md:flex-row items-center p-6 rounded-lg shadow-lg max-w-6xl">
+              
+              {/* Image with Gradient Gray Background */}
+              <motion.div
+                  className="md:w-3/5 w-full flex justify-center mb-6 md:mb-0 bg-gradient-to-r from-gray-300 to-gray-100 p-4 rounded-lg"
+                  initial="hidden"
+                  animate={inView ? "visible" : "hidden"}
+                  variants={revealVariants}
+              >
+                  <img
+                  src={moviePic}
+                  alt="Project showcase"
+                  className="rounded-lg w-full h-auto max-h-[400px] object-contain"
+                  />
+              </motion.div>
+
+              {/* Text and tools used on the right */}
+              <motion.div
+                  className="md:w-2/5 w-full flex flex-col items-start md:ml-8"
+                  initial="hidden"
+                  animate={inView ? "visible" : "hidden"}
+                  variants={revealVariants}
+              >
+                  <h2 className="text-2xl font-bold mb-4">UE Game Development Project</h2>
+                  <p className="text-gray-600 mb-6">
+                    A game created using Unreal Engine, where I utilized tools like Blueprint scripting, physics, and visual effects. 
+                    The game showcases immersive environments, dynamic lighting, and AI-driven characters, all developed with a focus on gameplay and high-quality graphics.
+                  </p>
+                  <div className="text-gray-600 flex items-center">
+                      <strong>Unreal Engine | Blueprint Visual Scripting | Unreal Editor</strong>
+                      {/* Circular Button with Zoom-in on Hover for External Link */}
+                      <a 
+                      href="https://github.com/josshuabalita/MovieApplication" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="ml-4 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center transition duration-300 transform hover:scale-110"
+                      aria-label="GitHub Repository"
+                      title="Movie Application Repository"
+                      >
+                      <i className="fas fa-external-link-alt text-gray-700"></i>  
+                      </a>
+                  </div>
+              </motion.div>
+          </div>
+      </motion.div>
+
+      {/* Project Showcase Section - 4 */}
+      <motion.div
+        className="w-full flex justify-center items-center px-5 md:px-0 mb-12"
+        ref={ref}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        variants={revealVariants}
+      >
+          <div className="flex flex-col md:flex-row items-center p-6 rounded-lg shadow-lg max-w-6xl">
+              
+              {/* Text and tools used on the left */}
+              <motion.div
+                  className="md:w-2/5 w-full flex flex-col items-start md:mr-8"
+                  initial="hidden"
+                  animate={inView ? "visible" : "hidden"}
+                  variants={revealVariants}
+              >
+                  <h2 className="text-2xl font-bold mb-4">Stock Market/ Budgeting Website</h2>
+                  <p className="text-gray-600 mb-6">
+                    The School Portal is a user-friendly platform that allows students to register, drop, or 
+                    exchange courses and contact the administration for support. Administrators can manage student profiles, 
+                    add or remove courses, and access student contact information, making school management efficient and streamlined.
+                  </p>
+                  <div className="text-gray-600 flex items-center">
+                      <strong>Angular JS | Spring Boot | VS Code | SQL | Docker | Jenkins</strong>
+                      {/* Circular Button with Zoom-in on Hover for External Link */}
+                      <a 
+                      href="https://github.com/josshuabalita/SchoolPortalWebsite" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="ml-4 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center transition duration-300 transform hover:scale-110"
+                      aria-label="GitHub Repository"
+                      title="Movie Application Repository"
+                      >
+                      <i className="fas fa-external-link-alt text-gray-700"></i>  
+                      </a>
+                  </div>
+              </motion.div>
+
+              {/* Image with Gradient Gray Background on the right */}
+              <motion.div
+                  className="md:w-3/5 w-full flex justify-center mb-6 md:mb-0 bg-gradient-to-r from-gray-300 to-gray-100 p-4 rounded-lg"
+                  initial="hidden"
+                  animate={inView ? "visible" : "hidden"}
+                  variants={revealVariants}
+              >
+                  <img
+                  src={portalPic}
+                  alt="Project showcase"
+                  className="rounded-lg w-full h-auto max-h-[400px] object-contain"
+                  />
+              </motion.div>
+          </div>
+      </motion.div>
+
     </div>
   );
 };
+
 
 export default ProjectShowcase;

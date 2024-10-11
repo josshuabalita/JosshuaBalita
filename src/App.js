@@ -13,8 +13,8 @@ function App() {
       <Navbar />
       <HeroSection />
       <About />
-      <Languages />
       <ProjectShowcase />
+      <Languages />
       <Contact /> 
       <Footer />
     </div>
