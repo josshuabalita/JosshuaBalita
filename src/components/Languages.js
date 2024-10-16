@@ -16,7 +16,7 @@ const groupedLanguages = {
   'Back-End Languages': [
     { name: 'Node.js', icon: 'devicon-nodejs-plain colored' },
     { name: 'Java', icon: 'devicon-java-plain colored' },
-    { name: 'Spring Boot', icon: 'devicon-spring-plain colored' },
+    { name: 'ASP.NET', icon: 'devicon-dotnetcore-plain colored' },
     { name: 'C#', icon: 'devicon-csharp-plain colored' },
     { name: 'C++', icon: 'devicon-cplusplus-plain colored' },
     { name: 'SQL', icon: 'devicon-mysql-plain colored' },
@@ -84,25 +84,24 @@ const Languages = () => {
 
   const gridItems = groupedLanguages[selectedSection];
 
-  // To ensure the grid layout stays consistent, add placeholder items if fewer than 9 items
   const filledGridItems = [...gridItems];
   while (filledGridItems.length < 9) {
-    filledGridItems.push({ name: '', icon: '' }); // Add empty items to maintain the grid
+    filledGridItems.push({ name: '', icon: '' }); 
   }
 
   const { ref: skillsTitleRef, inView: skillsTitleInView } = useInView({
-    triggerOnce: true, // Reveal only once
-    threshold: 0.1,    // When 10% of the title is in view
+    triggerOnce: true,
+    threshold: 0.1,    
   });
 
   return (
     <div id="skills" className="flex flex-wrap min-h-screen bg-black py-5">
       {/* Centered Skills Title */}
       <motion.div
-        ref={skillsTitleRef} // Track the visibility of the title
-        initial={{ opacity: 0, x: -100 }} // Start off-screen to the left
-        animate={skillsTitleInView ? { opacity: 1, x: 0 } : {}} // Animate only when in view
-        transition={{ duration: 0.7, ease: 'easeOut' }} // Animation duration
+        ref={skillsTitleRef} 
+        initial={{ opacity: 0, x: -100 }} 
+        animate={skillsTitleInView ? { opacity: 1, x: 0 } : {}} 
+        transition={{ duration: 0.7, ease: 'easeOut' }} 
         className="w-full text-center mb-12"
       >
         <h1 className="text-3xl md:text-4xl font-bold text-white">

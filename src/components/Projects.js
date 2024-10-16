@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import moviePic from '../images/movieStreams.png';  
-import portalPic from '../images/studentPortal.png'
+import portalPic from '../images/studentPortal.png';
 
 const revealVariants = {
   hidden: { opacity: 0, x: -100 },
@@ -14,249 +14,113 @@ const revealVariants = {
 };
 
 const ProjectShowcase = () => {
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const [heroRef, heroInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const projectRefs = [
+    useInView({ triggerOnce: true, threshold: 0.1 }),
+    useInView({ triggerOnce: true, threshold: 0.1 }),
+    useInView({ triggerOnce: true, threshold: 0.1 }),
+    useInView({ triggerOnce: true, threshold: 0.1 }),
+  ];
+
+  const projects = [
+    {
+      title: 'Movie Streams',
+      description: 'App built with WinForms that allows users to browse top movies, add favorites, create a watchlist, and search for movies.',
+      technologies: 'C# | WinForms | Visual Studio | Movies API',
+      image: moviePic,
+      link: 'https://github.com/josshuabalita/MovieApplication'
+    },
+    {
+      title: 'School Portal Website',
+      description: 'The School Portal is a user-friendly platform that allows students to register, drop, or exchange courses and contact the administration for support.',
+      technologies: 'React JS | Express JS | VS Code | MongoDB | API',
+      image: portalPic,
+      link: 'https://github.com/josshuabalita/SchoolPortalWebsite'
+    },
+    {
+      title: 'UE Game Development Project',
+      description: 'A game created using Unreal Engine, where I utilized tools like Blueprint scripting, physics, and visual effects. The game showcases immersive environments, dynamic lighting, and AI-driven characters, all developed with a focus on gameplay and high-quality graphics.',
+      technologies: 'Unreal Engine | Blueprint Visual Scripting | Unreal Editor',
+      image: moviePic,
+      link: 'https://github.com/josshuabalita/MovieApplication'
+    },
+    {
+      title: 'Stock Market/ Budgeting Website',
+      description: 'The Stock Market/Budgeting Website is a platform that provides users with financial tools to track their expenses and view stock market information. It includes features such as budget planning, transaction tracking, and stock market analysis.',
+      technologies: 'Angular JS | Spring Boot | VS Code | SQL | Docker | Jenkins',
+      customContent: (
+        <div className="w-full h-[400px] bg-gradient-to-r from-gray-300 to-gray-100 p-4 rounded-lg flex items-center justify-center">
+          <div className="w-full h-full bg-black rounded-lg p-6 flex flex-col items-center justify-center">
+            <h3 className="text-xl font-semibold mb-4 text-white">Website in Progress...</h3>
+            <div className="w-3/4 bg-lightGray rounded-full h-4 overflow-hidden">
+              <div className="bg-accent h-full animate-progress-bar"></div>
+            </div>
+          </div>
+          <style>{`
+            @keyframes progress-bar {
+              0% { width: 0%; }
+              50% { width: 75%; }
+              100% { width: 0%; }
+            }
+            .animate-progress-bar {
+              animation: progress-bar 3s linear infinite;
+            }
+          `}</style>
+        </div>
+      ),
+      link: 'https://github.com/josshuabalita/StockMarketBudgetingWebsite'
+    }
+  ];
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-black py-5">
-      
+    <div id="projects" className="flex flex-col items-center min-h-screen bg-black py-5 px-4 sm:px-6 lg:px-8">
       <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={revealVariants}
-          className="w-full text-center mb-12 relative"
-      >
-          <h1 className="text-3xl md:text-4xl font-bold uppercase mt-12">
-              My <span className="text-orange-500">Projects</span>.
-          </h1>
-          {/* Custom Underline */}
-          <div className="w-16 h-1 bg-orange-500 mx-auto mt-4 rounded-full"></div>
-      </motion.div>
-
-      {/* Project Showcase Section */}
-      <motion.div
-          className="w-full flex justify-center items-center px-5 md:px-0 mb-12"
-          ref={ref}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={revealVariants}
-      >
-          <div className="flex flex-col md:flex-row items-center p-6 rounded-lg shadow-lg max-w-6xl">
-              
-              {/* Image with Gradient Gray Background */}
-              <motion.div
-                  className="md:w-3/5 w-full flex justify-center mb-6 md:mb-0 bg-gradient-to-r from-gray-300 to-gray-100 p-4 rounded-lg"
-                  initial="hidden"
-                  animate={inView ? "visible" : "hidden"}
-                  variants={revealVariants}
-              >
-                  <img
-                  src={moviePic}
-                  alt="Project showcase"
-                  className="rounded-lg w-full h-auto max-h-[400px] object-contain"
-                  />
-              </motion.div>
-
-              {/* Text and tools used on the right */}
-              <motion.div
-                  className="md:w-2/5 w-full flex flex-col items-start md:ml-8"
-                  initial="hidden"
-                  animate={inView ? "visible" : "hidden"}
-                  variants={revealVariants}
-              >
-                  <h2 className="text-2xl font-bold mb-4">Movie Streams</h2>
-                  <p className="text-gray-600 mb-6">
-                    App built with WinForms that allows users to browse top movies, add favorites, 
-                    create a watchlist, and search for movies. The backend integrates with a movie data API for dynamic content retrieval.
-                  </p>
-                  <div className="text-gray-600 flex items-center">
-                      <strong>C# | WinForms | Visual Studio | Movies API</strong>
-                      {/* Circular Button with Zoom-in on Hover for External Link */}
-                      <a 
-                      href="https://github.com/josshuabalita/MovieApplication" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="ml-4 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center transition duration-300 transform hover:scale-110"
-                      aria-label="GitHub Repository"
-                      title="Movie Application Repository"
-                      >
-                      <i className="fas fa-external-link-alt text-gray-700"></i>  
-                      </a>
-                  </div>
-              </motion.div>
-          </div>
-      </motion.div>
-
-      {/* Project Showcase Section - 2 */}
-      <motion.div
-          className="w-full flex justify-center items-center px-5 md:px-0 mb-12"
-          ref={ref}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          variants={revealVariants}
-      >
-          <div className="flex flex-col md:flex-row items-center p-6 rounded-lg shadow-lg max-w-6xl">
-              
-              {/* Text and tools used on the left */}
-              <motion.div
-                  className="md:w-2/5 w-full flex flex-col items-start md:mr-8"
-                  initial="hidden"
-                  animate={inView ? "visible" : "hidden"}
-                  variants={revealVariants}
-              >
-                  <h2 className="text-2xl font-bold mb-4">School Portal Website</h2>
-                  <p className="text-gray-600 mb-6">
-                    The School Portal is a user-friendly platform that allows students to register, drop, or 
-                    exchange courses and contact the administration for support. Administrators can manage student profiles, 
-                    add or remove courses, and access student contact information, making school management efficient and streamlined.
-                  </p>
-                  <div className="text-gray-600 flex items-center">
-                      <strong>React JS | Express JS | VS Code | MongoDB | API</strong>
-                      {/* Circular Button with Zoom-in on Hover for External Link */}
-                      <a 
-                      href="https://github.com/josshuabalita/SchoolPortalWebsite" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="ml-4 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center transition duration-300 transform hover:scale-110"
-                      aria-label="GitHub Repository"
-                      title="Movie Application Repository"
-                      >
-                      <i className="fas fa-external-link-alt text-gray-700"></i>  
-                      </a>
-                  </div>
-              </motion.div>
-
-              {/* Image with Gradient Gray Background on the right */}
-              <motion.div
-                  className="md:w-3/5 w-full flex justify-center mb-6 md:mb-0 bg-gradient-to-r from-gray-300 to-gray-100 p-4 rounded-lg"
-                  initial="hidden"
-                  animate={inView ? "visible" : "hidden"}
-                  variants={revealVariants}
-              >
-                  <img
-                  src={portalPic}
-                  alt="Project showcase"
-                  className="rounded-lg w-full h-auto max-h-[400px] object-contain"
-                  />
-              </motion.div>
-          </div>
-      </motion.div>
-
-      {/* Project Showcase Section - 3*/}
-      <motion.div
-        className="w-full flex justify-center items-center px-5 md:px-0 mb-12"
-        ref={ref}
+        ref={heroRef}
         initial="hidden"
-        animate={inView ? "visible" : "hidden"}
+        animate={heroInView ? "visible" : "hidden"}
         variants={revealVariants}
+        className="w-full text-center mb-12"
       >
-          <div className="flex flex-col md:flex-row items-center p-6 rounded-lg shadow-lg max-w-6xl">
-              
-              {/* Image with Gradient Gray Background */}
-              <motion.div
-                  className="md:w-3/5 w-full flex justify-center mb-6 md:mb-0 bg-gradient-to-r from-gray-300 to-gray-100 p-4 rounded-lg"
-                  initial="hidden"
-                  animate={inView ? "visible" : "hidden"}
-                  variants={revealVariants}
-              >
-                  <img
-                  src={moviePic}
-                  alt="Project showcase"
-                  className="rounded-lg w-full h-auto max-h-[400px] object-contain"
-                  />
-              </motion.div>
-
-              {/* Text and tools used on the right */}
-              <motion.div
-                  className="md:w-2/5 w-full flex flex-col items-start md:ml-8"
-                  initial="hidden"
-                  animate={inView ? "visible" : "hidden"}
-                  variants={revealVariants}
-              >
-                  <h2 className="text-2xl font-bold mb-4">UE Game Development Project</h2>
-                  <p className="text-gray-600 mb-6">
-                    A game created using Unreal Engine, where I utilized tools like Blueprint scripting, physics, and visual effects. 
-                    The game showcases immersive environments, dynamic lighting, and AI-driven characters, all developed with a focus on gameplay and high-quality graphics.
-                  </p>
-                  <div className="text-gray-600 flex items-center">
-                      <strong>Unreal Engine | Blueprint Visual Scripting | Unreal Editor</strong>
-                      {/* Circular Button with Zoom-in on Hover for External Link */}
-                      <a 
-                      href="https://github.com/josshuabalita/MovieApplication" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="ml-4 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center transition duration-300 transform hover:scale-110"
-                      aria-label="GitHub Repository"
-                      title="Movie Application Repository"
-                      >
-                      <i className="fas fa-external-link-alt text-gray-700"></i>  
-                      </a>
-                  </div>
-              </motion.div>
-          </div>
+        <h1 className="text-3xl sm:text-4xl font-bold uppercase mt-12">
+          My <span className="text-orange-500">Projects</span>.
+        </h1>
+        <div className="w-16 h-1 bg-orange-500 mx-auto mt-4 rounded-full"></div>
       </motion.div>
 
-      {/* Project Showcase Section - 4 */}
-      <motion.div
-        className="w-full flex justify-center items-center px-5 md:px-0 mb-12"
-        ref={ref}
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        variants={revealVariants}
-      >
-          <div className="flex flex-col md:flex-row items-center p-6 rounded-lg shadow-lg max-w-6xl">
-              
-              {/* Text and tools used on the left */}
-              <motion.div
-                  className="md:w-2/5 w-full flex flex-col items-start md:mr-8"
-                  initial="hidden"
-                  animate={inView ? "visible" : "hidden"}
-                  variants={revealVariants}
-              >
-                  <h2 className="text-2xl font-bold mb-4">Stock Market/ Budgeting Website</h2>
-                  <p className="text-gray-600 mb-6">
-                    The School Portal is a user-friendly platform that allows students to register, drop, or 
-                    exchange courses and contact the administration for support. Administrators can manage student profiles, 
-                    add or remove courses, and access student contact information, making school management efficient and streamlined.
-                  </p>
-                  <div className="text-gray-600 flex items-center">
-                      <strong>Angular JS | Spring Boot | VS Code | SQL | Docker | Jenkins</strong>
-                      {/* Circular Button with Zoom-in on Hover for External Link */}
-                      <a 
-                      href="https://github.com/josshuabalita/SchoolPortalWebsite" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="ml-4 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center transition duration-300 transform hover:scale-110"
-                      aria-label="GitHub Repository"
-                      title="Movie Application Repository"
-                      >
-                      <i className="fas fa-external-link-alt text-gray-700"></i>  
-                      </a>
-                  </div>
-              </motion.div>
-
-              {/* Image with Gradient Gray Background on the right */}
-              <motion.div
-                  className="md:w-3/5 w-full flex justify-center mb-6 md:mb-0 bg-gradient-to-r from-gray-300 to-gray-100 p-4 rounded-lg"
-                  initial="hidden"
-                  animate={inView ? "visible" : "hidden"}
-                  variants={revealVariants}
-              >
-                  <img
-                  src={portalPic}
-                  alt="Project showcase"
-                  className="rounded-lg w-full h-auto max-h-[400px] object-contain"
-                  />
-              </motion.div>
+      {projects.map((project, index) => (
+        <motion.div
+          key={index}
+          className="w-full flex flex-col md:flex-row justify-center items-center px-5 md:px-0 mb-12"
+          ref={projectRefs[index][0]}
+          initial="hidden"
+          animate={projectRefs[index][1] ? "visible" : "hidden"}
+          variants={revealVariants}
+        >
+          <div className="flex flex-col md:flex-row md:space-x-8 items-center p-6 rounded-lg shadow-lg max-w-6xl w-full">
+            {/* Image or Custom Content */}
+            <motion.div className="w-full md:w-3/5 flex justify-center mb-6 md:mb-0 bg-gradient-to-r from-gray-300 to-gray-100 p-4 rounded-lg">
+              {project.customContent || <img src={project.image} alt="Project showcase" className="rounded-lg w-full h-auto max-h-[400px] object-contain" />}
+            </motion.div>
+            {/* Text */}
+            <motion.div className="w-full md:w-2/5 flex flex-col items-start">
+              <h2 className="text-2xl font-bold mb-4">{project.title}</h2>
+              <p className="text-gray-600 mb-6">
+                {project.description}
+              </p>
+              <div className="text-gray-600 flex items-center">
+                <strong>{project.technologies}</strong>
+                {project.link && (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="ml-4 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center transition duration-300 transform hover:scale-110" aria-label="GitHub Repository" title={`${project.title} Repository`}>
+                    <i className="fas fa-external-link-alt text-gray-700"></i>
+                  </a>
+                )}
+              </div>
+            </motion.div>
           </div>
-      </motion.div>
-
+        </motion.div>
+      ))}
     </div>
   );
 };
-
 
 export default ProjectShowcase;

@@ -38,6 +38,13 @@ const educationTimeline = [
     location: 'Calgary, AB, CANADA',
     link: 'https://npowercanada.ca/',
   },
+  {
+  year: 'September 2015 - June 2021',
+  degree: 'High School Diploma',
+  institution: 'Jasper Jr./Sr. High School',
+  location: 'Jasper, AB, CANADA',
+  link: 'https://jasperhigh.gypsd.ca/',
+  },
 ];
 
 // Timeline data for work experience
@@ -139,7 +146,9 @@ const About = () => {
                     <p className="text-gray-500 mt-2 sm:mt-0 sm:ml-8">{item.year}</p>
                   </div>
                   <a href={item.link} target='_blank' rel='noopener noreferrer' className="relative text-gray-600 cursor-pointer inline-block after:absolute after:left-0 after:-bottom-0.5 after:w-full after:h-0.5 after:bg-gray-600 after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100"
-                  >{item.institution}</a>
+                  >{item.institution}
+                    <i className = "fas fa-external-link-alt ml-1"></i>
+                  </a>
                   <p className="text-gray-600">{item.location}</p>
                 </div>
               ))}
@@ -162,7 +171,9 @@ const About = () => {
                     <p className="text-gray-500 mt-2 sm:mt-0 sm:ml-8">{item.year}</p>
                   </div>
                   <a href={item.link} target='_blank' rel='noopener noreferrer' className="relative text-gray-600 cursor-pointer inline-block after:absolute after:left-0 after:-bottom-0.5 after:w-full after:h-0.5 after:bg-gray-600 after:scale-x-0 after:transition-transform after:duration-300 after:origin-left hover:after:scale-x-100">
-                    {item.institution}</a>
+                    {item.institution}
+                    <i className = "fas fa-external-link-alt ml-1"></i>
+                    </a>
                   <p className="text-gray-600">{item.location}</p>              
                 </div>
               ))}
