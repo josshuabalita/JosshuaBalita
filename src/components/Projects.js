@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import moviePic from '../images/movieStreams.png';  
 import portalPic from '../images/studentPortal.png';
-import game from '../images/game.png'
+import game from '../images/game.png';
 
 const revealVariants = {
   hidden: { opacity: 0, x: -100 },
@@ -74,7 +74,7 @@ const ProjectShowcase = () => {
   ];
 
   return (
-    <div id="projects" className="flex flex-col items-center min-h-screen bg-black py-5 px-4 sm:px-6 lg:px-8">
+    <div id="projects" className="flex flex-col items-center min-h-screen bg-black py-5 px-4 sm:px-6 lg:px-8 pb-12">
       <motion.div
         ref={heroRef}
         initial="hidden"
@@ -111,8 +111,19 @@ const ProjectShowcase = () => {
               <div className="text-gray-600 flex items-center">
                 <strong>{project.technologies}</strong>
                 {project.link && (
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="ml-4 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center transition duration-300 transform hover:scale-110" aria-label="GitHub Repository" title={`${project.title} Repository`}>
-                    <i className="fas fa-external-link-alt text-gray-700"></i>
+                  <a 
+                    href={project.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="ml-4 w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center transition duration-300 transform hover:scale-110" 
+                    aria-label="GitHub Repository" 
+                    title={`${project.title} Repository`}
+                    style={{
+                      minWidth: '3rem',
+                      minHeight: '3rem',
+                    }}
+                  >
+                    <i className="fas fa-external-link-alt text-gray-700 text-lg"></i>
                   </a>
                 )}
               </div>
