@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import moviePic from '../images/movieStreams.png';  
 import portalPic from '../images/studentPortal.png';
+import game from '../images/game.png'
 
 const revealVariants = {
   hidden: { opacity: 0, x: -100 },
@@ -39,10 +40,10 @@ const ProjectShowcase = () => {
     },
     {
       title: 'UE Game Development Project',
-      description: 'A game created using Unreal Engine, where I utilized tools like Blueprint scripting, physics, and visual effects. The game showcases immersive environments, dynamic lighting, and AI-driven characters, all developed with a focus on gameplay and high-quality graphics.',
+      description: 'A game created using Unreal Engine, where I utilized tools like Blueprint scripting, physics, and visual effects. The game showcases immersive environments, dynamic lighting, and AI-driven characters, all developed with a focus on gameplay and quality graphics.',
       technologies: 'Unreal Engine | Blueprint Visual Scripting | Unreal Editor',
-      image: moviePic,
-      link: 'https://github.com/josshuabalita/MovieApplication'
+      image: game,
+      link: 'https://drive.google.com/file/d/1e8p7JgRl6XdkA7WCIjpRX1ybDSqPOTcY/view?usp=drive_link'
     },
     {
       title: 'Stock Market/ Budgeting Website',

@@ -68,14 +68,7 @@ const useCombinedInView = () => {
 };
 
 const animationClassByIndex = (index) => {
-  switch (index % 3) {
-    case 0:
-      return 'animate-floatSlow';
-    case 1:
-      return 'animate-floatMedium';
-    default:
-      return 'animate-floatFast';
-  }
+  return 'animate-shimmer-outline'; 
 };
 
 const Languages = () => {
@@ -83,40 +76,36 @@ const Languages = () => {
   const { leftRef, rightRef, leftInView, rightInView } = useCombinedInView();
 
   const gridItems = groupedLanguages[selectedSection];
-
   const filledGridItems = [...gridItems];
+
   while (filledGridItems.length < 9) {
-    filledGridItems.push({ name: '', icon: '' }); 
+    filledGridItems.push({ name: '', icon: '' });
   }
 
   const { ref: skillsTitleRef, inView: skillsTitleInView } = useInView({
     triggerOnce: true,
-    threshold: 0.1,    
+    threshold: 0.1,
   });
 
   return (
-    <div id="skills" className="flex flex-wrap min-h-screen bg-black py-5">
-      {/* Centered Skills Title */}
+    <div id="skills" className="flex flex-wrap min-h-screen bg-black py-2">
       <motion.div
-        ref={skillsTitleRef} 
-        initial={{ opacity: 0, x: -100 }} 
-        animate={skillsTitleInView ? { opacity: 1, x: 0 } : {}} 
-        transition={{ duration: 0.7, ease: 'easeOut' }} 
-        className="w-full text-center mb-12"
+        ref={skillsTitleRef}
+        initial={{ opacity: 0, x: -100 }}
+        animate={skillsTitleInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+        className="w-full text-center mb-6"
       >
-        <h1 className="text-3xl md:text-4xl font-bold text-white">
-          SKILLS
-        </h1>
-        <div className="w-16 h-1 bg-orange-500 mx-auto mt-4 rounded-full"></div>
+        <h1 className="text-3xl md:text-4xl font-bold text-white">SKILLS</h1>
+        <div className="w-16 h-1 bg-orange-500 mx-auto mt-2 rounded-full"></div>
       </motion.div>
 
-      {/* Left Section */}
-      <motion.div 
+      <motion.div
         ref={leftRef}
         initial="hidden"
         animate={leftInView ? "visible" : "hidden"}
         variants={revealVariants}
-        className="w-full md:w-1/2 p-6 text-white space-y-8"
+        className="w-full md:w-1/2 p-4 sm:p-6 text-white space-y-4 sm:space-y-6"
       >
         {Object.keys(groupedLanguages).map((section) => (
           <div
@@ -133,23 +122,33 @@ const Languages = () => {
         ))}
       </motion.div>
 
-      {/* Right Section */}
-      <div ref={rightRef} className="w-full md:w-1/2 p-6 text-white">
-        <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+      <div ref={rightRef} className="w-full md:w-1/2 p-4 sm:p-6 text-white">
+        <motion.div
+          className="grid grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 md:gap-12"
           initial="hidden"
           animate={rightInView ? "visible" : "hidden"}
         >
           {filledGridItems.map((item, index) => (
-            <motion.div 
+            <motion.div
               key={item.name || `placeholder-${index}`}
               custom={index}
               variants={itemVariants}
-              className={`flex flex-col items-center justify-center min-h-[220px] space-y-4 p-6 bg-gradient-to-b from-gray-700 to-gray-900 rounded-lg shadow-xl ${animationClassByIndex(index)} ${
-                !item.name ? 'invisible' : '' /* Hide placeholders */}`}
+              className={`relative flex flex-col items-center justify-center min-h-[140px] min-w-[140px] sm:min-h-[180px] sm:min-w-[180px] md:min-h-[200px] md:min-w-[200px] lg:min-h-[220px] lg:min-w-[220px] space-y-4 p-4 sm:p-6 md:p-8 rounded-[20px] shadow-lg transition-all duration-700 ease-in-out hover:scale-110 grid-item ${animationClassByIndex(index)} ${!item.name ? 'invisible' : ''}`}
+              style={{
+                background: 'linear-gradient(to right, #1e3a8a, #1e40af, #1e3a8a)', /* New gradient */
+                padding: '8px',
+                borderRadius: '20px',
+                position: 'relative',
+                zIndex: 1,
+                boxShadow: '0 0 12px 6px rgba(59, 130, 246, 0.8)', 
+                backgroundSize: '200% 200%',
+                perspective: '1000px',
+                transformStyle: 'preserve-3d',
+                border: '1px solid rgba(255, 255, 255, 0.5)',
+              }}
             >
-              <i className={`${item.icon} text-5xl text-blue-400`}></i>
-              <span className="text-2xl font-semibold text-white text-center">{item.name}</span>
+              <i className={`${item.icon} text-3xl sm:text-4xl md:text-4xl lg:text-5xl text-white`} style={{ transform: 'translateZ(20px)' }}></i>
+              <span className="text-sm sm:text-md md:text-lg lg:text-xl font-semibold text-white text-center break-words px-2" style={{ transform: 'translateZ(20px)' }}>{item.name}</span>
             </motion.div>
           ))}
         </motion.div>
@@ -159,6 +158,3 @@ const Languages = () => {
 };
 
 export default Languages;
-
-
-

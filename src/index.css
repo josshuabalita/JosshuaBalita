@@ -16,11 +16,21 @@
     50% { border-color: transparent; }
   }
 
-  .typewriter-effect {
-    overflow: hidden;
-    border-right: 0.15em solid white;
-    white-space: nowrap;
-    display: inline-block;
-    animation: typewriter 5s steps(5, end) forwards, blink 0.75s step-end infinite;
+  @keyframes shimmerOutline {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 200% 50%;
+    }
   }
+  
+  .grid-item {
+    background: linear-gradient(to right, #1e3a8a, #1e40af, #1e3a8a); /* Original gradient */
+    padding: 8px;
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
 }
