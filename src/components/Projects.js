@@ -48,7 +48,7 @@ const ProjectShowcase = () => {
     {
       title: 'Stock Market/ Budgeting Website',
       description: 'The Stock Market/Budgeting Website is a platform that provides users with financial tools to track their expenses and view stock market information. It includes features such as budget planning, transaction tracking, and stock market analysis.',
-      technologies: 'Angular JS | Spring Boot | VS Code | SQL | Docker | Jenkins',
+      technologies: 'Angular JS | ASP.NET | VS Code | SQL | Docker | Jenkins',
       customContent: (
         <div className="w-full h-[400px] bg-gradient-to-r from-gray-300 to-gray-100 p-4 rounded-lg flex items-center justify-center">
           <div className="w-full h-full bg-black rounded-lg p-6 flex flex-col items-center justify-center">
